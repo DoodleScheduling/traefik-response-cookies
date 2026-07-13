@@ -1,4 +1,4 @@
-package responsecookies
+package traefik_response_cookies
 
 import (
 	"context"

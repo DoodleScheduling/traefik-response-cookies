@@ -1,6 +1,6 @@
 // Package responsecookies provides a Traefik middleware that returns
 // a configurable HTTP response containing multiple Set-Cookie headers.
-package responsecookies
+package traefik_response_cookies
 
 import (
 	"context"
