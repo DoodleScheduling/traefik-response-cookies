@@ -1,0 +1,42 @@
+displayName: Response Cookies
+iconPath: .assets/icon.png
+import: github.com/DoodleScheduling/traefik-response-cookies
+summary: Middleware that returns multiple configurable Set-Cookie headers with a configurable HTTP status code.
+testData:
+  statusCode: 200
+  cookies:
+    - name: SESSION_ID
+      value: ""
+      expires: "1970-01-01T00:00:01Z"
+      maxAge: 0
+      path: /auth/realm/
+      secure: true
+      httpOnly: true
+      sameSite: none
+
+    - name: IDENTITY
+      value: ""
+      expires: "1970-01-01T00:00:01Z"
+      maxAge: 0
+      path: /auth/realm/
+      secure: true
+      httpOnly: true
+      sameSite: none
+
+    - name: SESSION
+      value: ""
+      expires: "1970-01-01T00:00:01Z"
+      maxAge: 0
+      path: /auth/realm/
+      secure: true
+
+    - name: IDENTIFICATION
+      value: ""
+      expires: "1970-01-01T00:00:01Z"
+      maxAge: 0
+      path: /
+      domain: .example.com
+      secure: true
+      httpOnly: true
+      sameSite: lax
+type: middleware
