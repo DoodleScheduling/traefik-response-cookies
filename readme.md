@@ -8,7 +8,7 @@
 
 A Traefik middleware plugin that returns multiple configurable `Set-Cookie` headers and a configurable HTTP status code.
 
-The plugin is useful for endpoints that must expire or create several cookies and return a response directly from Traefik.
+The plugin is useful for endpoints that must expire or create several cookies and return a response directly from Traefik. 
 
 ## Behavior
 
