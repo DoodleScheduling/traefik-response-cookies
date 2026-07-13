@@ -189,29 +189,31 @@ experimental:
 
 ## Max-Age behavior
 
-The plugin configuration follows the HTTP header representation:
+The `maxAge` field controls how long the cookie remains valid.
+
+| Configuration | Generated attribute | Behavior |
+| --- | --- | --- |
+| Omitted | No `Max-Age` attribute | Creates a session cookie. |
+| `maxAge: 0` | `Max-Age=0` | Expires the cookie immediately. |
+| `maxAge: 3600` | `Max-Age=3600` | Keeps the cookie for 3600 seconds. |
+
+To delete a cookie immediately:
 
 ```yaml
-maxAge: 0
+cookies:
+  - name: SESSION_ID
+    value: ""
+    maxAge: 0
+    path: /
 ```
 
 This generates:
 
 ```http
-Max-Age=0
+Set-Cookie: SESSION_ID=; Path=/; Max-Age=0
 ```
 
-Internally, Go requires a negative `http.Cookie.MaxAge` value to serialize `Max-Age=0`. The plugin performs this conversion automatically.
-
-If `maxAge` is omitted, the `Max-Age` attribute is not included. Positive values are rendered directly:
-
-```yaml
-maxAge: 3600
-```
-
-```http
-Max-Age=3600
-```
+The cookie path and domain must match the existing cookie for the browser to remove it successfully.
 
 ## Development
 
