@@ -113,7 +113,9 @@ func TestMultipleResponseCookies(t *testing.T) {
 	}
 
 	response := recorder.Result()
-	defer response.Body.Close()
+	defer func() {
+		_ = response.Body.Close()
+	}()
 
 	if response.StatusCode != http.StatusOK {
 		t.Fatalf(
@@ -363,7 +365,9 @@ func TestExpires(t *testing.T) {
 	handler.ServeHTTP(recorder, request)
 
 	response := recorder.Result()
-	defer response.Body.Close()
+	defer func() {
+		_ = response.Body.Close()
+	}()
 
 	cookies := response.Cookies()
 
